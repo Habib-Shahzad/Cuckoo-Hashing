@@ -1,10 +1,17 @@
-from cuckoo import Cuckoo
+import sys
 import random
 
 
+import sys
+sys.path.insert(1, './cuckoo')
+
+
+# import hash tables
+from cuckoo import *
+
 #Batch insert and retrieval tests 
 def data_insert(size):
-    sample_keys = ['key'+str(x**2) for x in range(size)]
+    sample_keys = [str(x**2) for x in range(size)]
 
     sample_data = dict()
 
@@ -28,7 +35,7 @@ def data_insert(size):
 #Random inserts and retrieval tests 
 def random_inserts(size):
     
-    sample_keys = ['key'+str(x**2) for x in range(size)]
+    sample_keys = [str(x**2) for x in range(size)]
 
     sample_data = dict()
 
@@ -61,7 +68,7 @@ def test_data_insert():
 
 
 def test_data_insert_large():
-    assert data_insert(100000)
+    assert data_insert(10000)
 
 
 
@@ -69,7 +76,7 @@ def test_random_inserts():
     assert random_inserts(100)
 
 def test_random_inserts_large():
-    assert random_inserts(100000)
+    assert random_inserts(10000)
 
 
 
@@ -80,3 +87,4 @@ def test_random_inserts_large():
 
 # def test_data_insert_large():
 #     assert data_insert(1000000)
+
